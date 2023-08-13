@@ -19,4 +19,8 @@ enum R {
     enum NavItemTitles {
         static let articleListTitle = "News"
     }
+    
+    enum ImageNames {
+        static let articlePlaceholderImage = "newspaper"
+    }
 }

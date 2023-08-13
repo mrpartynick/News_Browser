@@ -23,7 +23,9 @@ class NewsCell: UICollectionViewCell {
     public let imageView: UIImageView = {
         let imv = UIImageView()
         imv.translatesAutoresizingMaskIntoConstraints = false
-        imv.image = UIImage(named: "newsTemplateImage")
+        let image = UIImage(systemName: R.ImageNames.articlePlaceholderImage)
+        imv.image = image?.withTintColor(.white)
+        imv.tintColor = .white
         imv.contentMode = .scaleToFill
         return imv
     }()
@@ -39,6 +41,7 @@ class NewsCell: UICollectionViewCell {
         return self.bounds.height / 50
     }
     
+    //MARK: - init
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
@@ -50,6 +53,7 @@ class NewsCell: UICollectionViewCell {
         setConstraints()
     }
     
+    //MARK: - layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -63,7 +67,7 @@ class NewsCell: UICollectionViewCell {
         // from being clipped to the corner radius
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = false
-        
+                
         textLabel.heightAnchor.constraint(lessThanOrEqualToConstant: contentView.bounds.height).isActive = true
     }
     
@@ -71,6 +75,7 @@ class NewsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - set constraints
     private func setConstraints() {
         textLabel.leadingAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true

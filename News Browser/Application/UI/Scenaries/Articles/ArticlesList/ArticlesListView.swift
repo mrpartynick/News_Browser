@@ -6,6 +6,7 @@
 //
 import UIKit
 
+//MARK: - view protocol
 protocol IArticlesListView: AnyObject {
     func showAlert()
     func showArticles(from dataObject: IArticlesDataObject)
