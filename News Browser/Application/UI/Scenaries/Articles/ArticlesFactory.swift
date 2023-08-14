@@ -18,5 +18,4 @@ class ArticlesFactory {
     public func getDetailedModule() -> DetailedArticleView {
         return DetailedArticleView(article: nil)
     }
-
 }

@@ -11,6 +11,8 @@ class NewsCell: UICollectionViewCell {
     
     static let reuseID = "CollectionCell"
     
+    private let shimmerView = ShimmerView()
+    
     public let textLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
@@ -49,6 +51,9 @@ class NewsCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(topView)
         contentView.addSubview(textLabel)
+        contentView.addSubview(shimmerView)
+        
+
         
         setConstraints()
     }
@@ -56,7 +61,7 @@ class NewsCell: UICollectionViewCell {
     //MARK: - layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        shimmerView.frame = contentView.frame
         topView.frame = contentView.bounds
 
         // Apply rounded corners
@@ -67,6 +72,7 @@ class NewsCell: UICollectionViewCell {
         // from being clipped to the corner radius
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = false
+        
                 
         textLabel.heightAnchor.constraint(lessThanOrEqualToConstant: contentView.bounds.height).isActive = true
     }

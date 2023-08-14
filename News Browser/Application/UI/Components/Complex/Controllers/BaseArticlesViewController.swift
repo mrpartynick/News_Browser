@@ -17,8 +17,7 @@ open class BaseArticlesViewController: UICollectionViewController {
         super.viewDidLoad()
         
         baseControllerSetup()
-//        setViewHierarchy()
-//        setConstraints()
+        
     }
     
     //MARK: - init

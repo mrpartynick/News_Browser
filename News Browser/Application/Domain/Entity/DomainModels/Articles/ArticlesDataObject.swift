@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArticlesDataObject: IArticlesDataObject {
+class ArticlesDataObject: IArticlesDataObject {
 
     
     var numberOfCategories: Int {
