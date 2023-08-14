@@ -26,7 +26,7 @@ class ArticlesCoordinator: IArticlesCoordinator {
         }
     }
     
-    private var _navigationController = ArticlesNavigationController()
+    private var _navigationController = UINavigationController()
     private let _modulesFactory = ArticlesFactory()
     private var _article: Article? = nil
     
