@@ -23,8 +23,8 @@ class NewsCell: UICollectionViewCell {
     public let imageView: UIImageView = {
         let imv = UIImageView()
         imv.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(systemName: R.ImageNames.articlePlaceholderImage)
-        imv.image = image?.withTintColor(.white)
+//        let image = UIImage(systemName: R.ImageNames.articlePlaceholderImage)
+//        imv.image = image?.withTintColor(.white)
         imv.tintColor = .white
         imv.contentMode = .scaleToFill
         return imv

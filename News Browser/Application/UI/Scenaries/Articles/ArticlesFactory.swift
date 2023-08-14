@@ -14,5 +14,9 @@ class ArticlesFactory {
     public func getListModule() -> ArticlesListView {
         return ArticlesListAssembly.getModule()
     }
+    
+    public func getDetailedModule() -> DetailedArticleView {
+        return DetailedArticleView(article: nil)
+    }
 
 }

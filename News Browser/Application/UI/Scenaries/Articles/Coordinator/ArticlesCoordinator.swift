@@ -40,12 +40,17 @@ class ArticlesCoordinator: IArticlesCoordinator {
         
         module.completion = {[weak self] article in
             guard let self = self else {return}
-            self._article?.title = article.title
-            self._article?.urlToImage = article.urlToImage
-            self._article?.urlToArticle = article.urlToArticle
-            // self?._showNextModule()
+            self._article = article
+            self.showDetailedArticleModule()
         }
         
+        navigationController.pushViewController(module, animated: true)
+    }
+    
+    //MARK: - show detailed article module
+    private func showDetailedArticleModule() {
+        let module = _modulesFactory.getDetailedModule()
+        module.article = self._article
         navigationController.pushViewController(module, animated: true)
     }
 }
