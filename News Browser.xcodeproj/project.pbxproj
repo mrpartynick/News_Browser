@@ -32,6 +32,7 @@
 		CF72EE912A88EA100012606F /* DetailedArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72EE902A88EA100012606F /* DetailedArticleView.swift */; };
 		CF72EE942A88EA420012606F /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72EE932A88EA420012606F /* RoundedImageView.swift */; };
 		CF72EE972A88F15D0012606F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF72EE962A88F15D0012606F /* RoundedButton.swift */; };
+		CF7EC5522A8A931E00EB7131 /* ShimmerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EC5512A8A931E00EB7131 /* ShimmerLayer.swift */; };
 		CFCEB1B32A7E663000B01CDD /* ArticlesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCEB1B22A7E663000B01CDD /* ArticlesCoordinator.swift */; };
 		CFDA5D392A7E8B2D00E6AB0F /* ArticlesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDA5D382A7E8B2D00E6AB0F /* ArticlesFactory.swift */; };
 		CFDA5D3B2A7E8CF800E6AB0F /* IArticlesModuleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDA5D3A2A7E8CF800E6AB0F /* IArticlesModuleController.swift */; };
@@ -42,7 +43,6 @@
 		CFE9FA732A84DA4E00469401 /* FileCahceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9FA722A84DA4E00469401 /* FileCahceService.swift */; };
 		CFE9FA752A84DBE800469401 /* CacheErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9FA742A84DBE800469401 /* CacheErrors.swift */; };
 		CFF9E6462A8A77AF001C33B5 /* ShimmerArticleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E6452A8A77AF001C33B5 /* ShimmerArticleCollection.swift */; };
-		CFF9E6492A8A79FD001C33B5 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9E6482A8A79FD001C33B5 /* ShimmerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +73,7 @@
 		CF72EE902A88EA100012606F /* DetailedArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedArticleView.swift; sourceTree = "<group>"; };
 		CF72EE932A88EA420012606F /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		CF72EE962A88F15D0012606F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		CF7EC5512A8A931E00EB7131 /* ShimmerLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerLayer.swift; sourceTree = "<group>"; };
 		CFCEB1B22A7E663000B01CDD /* ArticlesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesCoordinator.swift; sourceTree = "<group>"; };
 		CFDA5D382A7E8B2D00E6AB0F /* ArticlesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesFactory.swift; sourceTree = "<group>"; };
 		CFDA5D3A2A7E8CF800E6AB0F /* IArticlesModuleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IArticlesModuleController.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		CFE9FA722A84DA4E00469401 /* FileCahceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCahceService.swift; sourceTree = "<group>"; };
 		CFE9FA742A84DBE800469401 /* CacheErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheErrors.swift; sourceTree = "<group>"; };
 		CFF9E6452A8A77AF001C33B5 /* ShimmerArticleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerArticleCollection.swift; sourceTree = "<group>"; };
-		CFF9E6482A8A79FD001C33B5 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,10 +327,18 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		CF7EC5502A8A930300EB7131 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				CF7EC5512A8A931E00EB7131 /* ShimmerLayer.swift */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
 		CFACC7982A85361F0084BB56 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				CFF9E6472A8A79E6001C33B5 /* UIViews */,
+				CF7EC5502A8A930300EB7131 /* Layers */,
 				CF72EE952A88F1450012606F /* Buttons */,
 				CF72EE922A88EA220012606F /* ImageViews */,
 			);
@@ -387,14 +395,6 @@
 				CF14C1032A82B5E700E4661A /* Network */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		CFF9E6472A8A79E6001C33B5 /* UIViews */ = {
-			isa = PBXGroup;
-			children = (
-				CFF9E6482A8A79FD001C33B5 /* ShimmerView.swift */,
-			);
-			path = UIViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7EC5522A8A931E00EB7131 /* ShimmerLayer.swift in Sources */,
 				CF72EE942A88EA420012606F /* RoundedImageView.swift in Sources */,
 				CFDA5D392A7E8B2D00E6AB0F /* ArticlesFactory.swift in Sources */,
 				CFE9FA752A84DBE800469401 /* CacheErrors.swift in Sources */,
@@ -497,7 +498,6 @@
 				CFDA5D3B2A7E8CF800E6AB0F /* IArticlesModuleController.swift in Sources */,
 				CF72EE972A88F15D0012606F /* RoundedButton.swift in Sources */,
 				CFE9FA6F2A84D6C200469401 /* NewsCategory.swift in Sources */,
-				CFF9E6492A8A79FD001C33B5 /* ShimmerView.swift in Sources */,
 				CFCEB1B32A7E663000B01CDD /* ArticlesCoordinator.swift in Sources */,
 				CFE9FA6E2A84D6C200469401 /* News.swift in Sources */,
 				CF0D7A092A8364870087EB9C /* DataHandler.swift in Sources */,

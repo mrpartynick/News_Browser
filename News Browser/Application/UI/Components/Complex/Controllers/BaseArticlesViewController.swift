@@ -10,25 +10,24 @@ import UIKit
 open class BaseArticlesViewController: UICollectionViewController {
     
     internal var dataObject: IArticlesDataObject?
-    private let cellType = NewsCell.self
-    
-    //MARK: - viewDidLoad
-    override open func viewDidLoad() {
-        super.viewDidLoad()
+    internal var cellType = NewsCell.self
+    internal var headerType = SectionTitle.self
         
-        baseControllerSetup()
-        
-    }
-    
     //MARK: - init
     init() {
         super.init(collectionViewLayout: UICollectionViewLayout())
         let layout = createLayout()
         collectionView.collectionViewLayout = layout
+        baseControllerSetup()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - viewDidLoad
+    override open func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     //MARK: - create layout
@@ -61,9 +60,6 @@ open class BaseArticlesViewController: UICollectionViewController {
         collectionView.register(cellType.self, forCellWithReuseIdentifier: NewsCell.reuseID)
         collectionView.register(SectionTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionTitle.id)
     }
-    
-//    func setViewHierarchy(){}
-//    func setConstraints(){}
 }
 
 //MARK: - Collection data source methods
@@ -79,12 +75,10 @@ extension BaseArticlesViewController {
     }
 
     open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseID, for: indexPath) as! NewsCell
         let cellData = dataObject?.categories[indexPath.section].articles[indexPath.row]
         cell.textLabel.text = cellData!.title
 
-        
         return cell
     }
     

@@ -10,9 +10,8 @@ import UIKit
 class NewsCell: UICollectionViewCell {
     
     static let reuseID = "CollectionCell"
-    
-    private let shimmerView = ShimmerView()
-    
+    let shimmerLayer = ShimmerLayer()
+        
     public let textLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
@@ -51,9 +50,7 @@ class NewsCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(topView)
         contentView.addSubview(textLabel)
-        contentView.addSubview(shimmerView)
-        
-
+        contentView.layer.addSublayer(shimmerLayer)
         
         setConstraints()
     }
@@ -61,7 +58,7 @@ class NewsCell: UICollectionViewCell {
     //MARK: - layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        shimmerView.frame = contentView.frame
+        shimmerLayer.frame = contentView.frame
         topView.frame = contentView.bounds
 
         // Apply rounded corners
@@ -92,9 +89,4 @@ class NewsCell: UICollectionViewCell {
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true 
     }
-    
-    private func configureGradient() {
-        
-    }
-    
 }
