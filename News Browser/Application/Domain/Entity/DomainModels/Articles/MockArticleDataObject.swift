@@ -24,7 +24,22 @@ struct MockArticleDataObject: IArticlesDataObject {
         }
     }
     
-    private var _categories: [ArticleCategory] = [ArticleCategory(name: "Kek", articles: [Article(title: "lol", urlToArticle: "kek", urlToImage: "kek")])]
+    private var _categories: [ArticleCategory] = []
+    
+    init() {
+        for categoryCount in 0...20 {
+            var category = ArticleCategory(articles: [Article]())
+            
+            for articleCount in 0...10 {
+                let article = Article(title: "", urlToArticle: "")
+                category.articles.append(article)
+            }
+            
+            _categories.append(category)
+        }
+    }
+    
+
     
     public func getArticle(by indexPath: IndexPath) -> Article {
         let categoryIndex = indexPath.section

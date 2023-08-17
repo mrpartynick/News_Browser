@@ -10,7 +10,7 @@ import UIKit
 class NewsCell: UICollectionViewCell {
     
     static let reuseID = "CollectionCell"
-    
+        
     public let textLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
@@ -56,7 +56,6 @@ class NewsCell: UICollectionViewCell {
     //MARK: - layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         topView.frame = contentView.bounds
 
         // Apply rounded corners
@@ -67,6 +66,7 @@ class NewsCell: UICollectionViewCell {
         // from being clipped to the corner radius
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = false
+        
                 
         textLabel.heightAnchor.constraint(lessThanOrEqualToConstant: contentView.bounds.height).isActive = true
     }
@@ -86,9 +86,4 @@ class NewsCell: UICollectionViewCell {
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true 
     }
-    
-    private func configureGradient() {
-        
-    }
-    
 }

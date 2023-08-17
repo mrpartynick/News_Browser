@@ -26,7 +26,7 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
         navigationItem.searchController = _searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = R.NavItemTitles.articleListTitle
-        
+                
         collectionView.reloadData()
     }
     
@@ -39,6 +39,7 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
         presenter.viewDidLoad()
     }
     
+    
     //MARK: - show alert
     public func showAlert() {
         let badConnectionAlert = UIAlertController(title: R.AlertStrings.BadConnection.title, message: R.AlertStrings.BadConnection.message, preferredStyle: .alert)
@@ -49,7 +50,7 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
     //MARK: - show articles
     public func showArticles(from dataObject: IArticlesDataObject) {
         self.dataObject = dataObject
-        collectionView.reloadData()
+        state = .Showing
     }
 }
 

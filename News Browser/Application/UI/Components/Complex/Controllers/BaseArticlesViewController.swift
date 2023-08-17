@@ -9,27 +9,36 @@ import UIKit
 
 open class BaseArticlesViewController: UICollectionViewController {
     
-    internal var dataObject: IArticlesDataObject?
-    private let cellType = NewsCell.self
-    
-    //MARK: - viewDidLoad
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        baseControllerSetup()
-//        setViewHierarchy()
-//        setConstraints()
+    internal enum State {
+        case Loading
+        case Showing
     }
     
+    internal var state: State = .Loading {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    internal var dataObject: IArticlesDataObject? = MockArticleDataObject()
+    internal var cellType = NewsCell.self
+    internal var headerType = SectionTitle.self
+        
     //MARK: - init
     init() {
         super.init(collectionViewLayout: UICollectionViewLayout())
         let layout = createLayout()
         collectionView.collectionViewLayout = layout
+        baseControllerSetup()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - viewDidLoad
+    override open func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     //MARK: - create layout
@@ -61,10 +70,10 @@ open class BaseArticlesViewController: UICollectionViewController {
     func baseControllerSetup(){
         collectionView.register(cellType.self, forCellWithReuseIdentifier: NewsCell.reuseID)
         collectionView.register(SectionTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionTitle.id)
+        collectionView.register(ShimmerCell.self, forCellWithReuseIdentifier: ShimmerCell.reuseID)
+        collectionView.register(ShimmerTitle.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ShimmerTitle.id)
+
     }
-    
-//    func setViewHierarchy(){}
-//    func setConstraints(){}
 }
 
 //MARK: - Collection data source methods
@@ -79,24 +88,37 @@ extension BaseArticlesViewController {
         return dataObject?.categories[section].articles.count ?? 0
     }
 
+    //MARK: - cell for row 
     open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseID, for: indexPath) as! NewsCell
-        let cellData = dataObject?.categories[indexPath.section].articles[indexPath.row]
-        cell.textLabel.text = cellData!.title
-
-        
-        return cell
+        switch state {
+        case .Loading:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShimmerCell.reuseID, for: indexPath) as! ShimmerCell
+            return cell
+        case .Showing:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseID, for: indexPath) as! NewsCell
+            let cellData = dataObject?.categories[indexPath.section].articles[indexPath.row]
+            cell.textLabel.text = cellData!.title
+            
+            return cell
+        }
     }
     
+    //MARK: - supplementary elemnt
     open override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let sectionTitle = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionTitle.id, for: indexPath) as! SectionTitle
-            sectionTitle.title = dataObject?.categories[indexPath.section].name ?? ""
-            return sectionTitle
-            
+            switch state {
+            case .Loading:
+                let sectionTitle = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ShimmerTitle.id, for: indexPath) as! ShimmerTitle
+                return sectionTitle
+                
+            case .Showing:
+                let sectionTitle = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionTitle.id, for: indexPath) as! SectionTitle
+                sectionTitle.title = dataObject?.categories[indexPath.section].name ?? ""
+                return sectionTitle
+            }
+
         default:
             return UICollectionReusableView()
         }
