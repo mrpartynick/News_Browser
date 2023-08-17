@@ -16,7 +16,6 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
     
     private var _completion: ((Article) -> ())?
     private let _searchController = UISearchController()
-    private let shimmerCollection = ShimerArticleCollection()
     public var presenter: IArticlesListViewOutput!
     
     //MARK: - init
@@ -27,9 +26,7 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
         navigationItem.searchController = _searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = R.NavItemTitles.articleListTitle
-        
-        shimmerCollection.dataObject = dataObject
-        
+                
         collectionView.reloadData()
     }
     
@@ -42,12 +39,6 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
         presenter.viewDidLoad()
     }
     
-    //MARK: - show shimmer loading
-    private func showShimmerLoading() {
-        shimmerCollection.collectionView.frame = self.collectionView.frame
-        shimmerCollection.collectionView.backgroundColor = .white
-        collectionView.addSubview(shimmerCollection.collectionView)
-    }
     
     //MARK: - show alert
     public func showAlert() {
@@ -59,7 +50,7 @@ class ArticlesListView: BaseArticlesViewController, IArticlesListView {
     //MARK: - show articles
     public func showArticles(from dataObject: IArticlesDataObject) {
         self.dataObject = dataObject
-        collectionView.reloadData()
+        state = .Showing
     }
 }
 

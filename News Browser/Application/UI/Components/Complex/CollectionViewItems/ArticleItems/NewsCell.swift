@@ -10,7 +10,6 @@ import UIKit
 class NewsCell: UICollectionViewCell {
     
     static let reuseID = "CollectionCell"
-    let shimmerLayer = ShimmerLayer()
         
     public let textLabel: UILabel = {
         let l = UILabel()
@@ -50,7 +49,6 @@ class NewsCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(topView)
         contentView.addSubview(textLabel)
-        contentView.layer.addSublayer(shimmerLayer)
         
         setConstraints()
     }
@@ -58,7 +56,6 @@ class NewsCell: UICollectionViewCell {
     //MARK: - layout subviews
     override func layoutSubviews() {
         super.layoutSubviews()
-        shimmerLayer.frame = contentView.frame
         topView.frame = contentView.bounds
 
         // Apply rounded corners
